@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.util.Map;
 
 @Entity
+@Table(name = "eventi")
 public class Evento {
 
     @Id
@@ -20,6 +21,12 @@ public class Evento {
     @Column(columnDefinition = "VARCHAR(255)")
     private TipoEvento tipoEvento;
     private int numeroMassimoPartecipanti;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
+
+
 
     public Evento(){
         //! CREIAMO IL COSTRUTTORE VUOTO PER JPA
